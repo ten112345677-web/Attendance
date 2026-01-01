@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Smart Attendance</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<link rel="stylesheet" href="style.css">
+<script src="app.js" defer></script>
+</head>
+<body>
+
+<div class="container">
+  <h1>📍 Smart Attendance</h1>
+  <div id="clock" class="clock">--:--:--</div>
+
+  <input id="studentId" placeholder="กรอกรหัสนักศึกษา" oninput="findStudent()">
+  <div id="studentName">รอการกรอกรหัส</div>
+
+  <button onclick="checkIn()">✅ เช็คชื่อเข้าเรียน</button>
+
+  <div id="map"></div>
+
+  <div class="history-section">
+    <label>วันที่: <input type="date" id="historyDate" onchange="loadHistory()"></label>
+    <input type="text" id="searchName" placeholder="ค้นหารายชื่อ" oninput="filterHistory()">
+    <h3>รายชื่อที่เช็คชื่อแล้ว</h3>
+    <div id="history" class="history"></div>
+    <canvas id="attendanceChart" height="150"></canvas>
+    <button onclick="exportCSV()">📥 ดาวน์โหลด CSV</button>
+  </div>
+</div>
+
+<div class="theme-toggle">
+  <button id="darkModeBtn">🌙 Dark Mode</button>
+</div>
+
+<div id="popup" class="popup"></div>
+
+</body>
+</html>
